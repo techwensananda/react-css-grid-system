@@ -1,24 +1,49 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import About from './components/About';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Home from './components/Home';
+import NewArrival from './components/NewArrival';
+import NewsLetter from './components/NewsLetter';
+import Products from './components/Products';
+import Service from './components/Service';
+import SideCart from './components/SideCart';
+import Testimonial from './components/Testimonial';
 
 function App() {
+  const[showCart,setShowCart]=useState(false)
+  const toggleCart=()=>setShowCart(prev=>!prev)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <>
+
+ <Header toggleCart={toggleCart}/>
+<SideCart  toggleCart={toggleCart} showCart={showCart} />
+  <main className="main">
+
+   <Home />
+
+   <NewArrival />
+ 
+   <About/>
+  
+   <Service/>
+   <Products/>
+   <Testimonial/>
+   <NewsLetter/>
+   
+ 
+  </main>
+
+<Footer/>
+ 
+
+
+      
+
+    
+  </>
   );
 }
 
